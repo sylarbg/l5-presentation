@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laravel</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.css">
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+<div class="page">
+    <div class="page-content">
+            <div class="row">
+        <div class="col s12 m9 offset-m1">
+            <div id="applicationstructure" class="section scrollspy row">
+    <div class="col s12 m6">
+        <h4 class="laravel-red">Application Structure</h4>
+        <p>Базовата структура на едно приложение, използващо Laravel, се стреми да предостави добра отправна точка за
+            големи и малки приложения. <strong>Laravel</strong> не налага почти никакви ограничения за това как ще организирате класовете в нашето приложение.</p>
+        <div id="root-dir" class="section scrollspy row">
+            <h5 class="laravel-red">Root Dir</h5>
+            <p> <strong>app</strong> - основния код на вашето приложение </p>
+            <p><strong>bootstrap</strong> - регистрира <strong>Composer Auto Loader</strong> и създава инстанция на приложението. (<strong>Illuminate\Foundation\Application</strong>) </p>
+
+            <p><strong>config</strong>  - конфигурация </p>
+            <p><strong>database</strong> - миграции, Тестови данни , (seeds, model factories) </p>
+            <p><strong>public</strong> - "front controller" и публично достъпни файлове (*.js, *.css)
+            <p><strong>resources</strong> - темплейти, езикови файлове, LESS, SASS, CoffeeScript</p>
+            <p><strong>storage</strong> - запис на логове, компилирани темплейти </p>
+            <p><strong>tests</strong> - автоматизирани тестове </p>
+            <p><strong>vendor</strong> - външни библиотеки </p>
+
+            <h5 class="laravel-red">App</h5>
+            <p>
+                Директорията <strong>app</strong> е регистриана под namespace "App" използвайки PSR-4.
+            <p>/Http - съдържа логика за обработка на заявки към приложението постъпили през HTTP</p>
+            <p>/Console - съдържа логика за обработка на заявки към приложението постъпили през CLI</p>
+            <p><strong>Providers</strong> - централизирано място за инициализиране и настройка на компоененти като: Auth, Event, Route и др. </p>
+            <p><strong>/Events</strong>  - Събития</p>
+            <p><strong>/Exceptions</strong> - Изключения </p>
+            <p><strong>/Jobs</strong> - Задачи(команди), които могат да бъдат изпълнявани на заден фон или синхронно в текущатата заявка</p>
+            <p><strong>Listeners</strong> - Класове абонирани за съответни събития. </p>
+            <p><strong>Policies</strong> - Политики за авторизация</p>
+        </div>
+
+
+    </div>
+    <div class="col s12 m6">
+                    <pre class="">
+├── app
+│   ├── Console
+│   │   ├── Commands
+│   │   │   └── Inspire.php
+│   │   └── Kernel.php
+│   ├── Events
+│   │   └── Event.php
+│   ├── Exceptions
+│   │   └── Handler.php
+│   ├── Http
+│   │   ├── Controllers
+│   │   │   ├── Auth
+│   │   │   │   ├── AuthController.php
+│   │   │   │   └── PasswordController.php
+│   │   │   └── Controller.php
+│   │   ├── Kernel.php
+│   │   ├── Middleware
+│   │   │   ├── Authenticate.php
+│   │   │   ├── EncryptCookies.php
+│   │   │   ├── RedirectIfAuthenticated.php
+│   │   │   └── VerifyCsrfToken.php
+│   │   ├── Requests
+│   │   │   └── Request.php
+│   │   └── routes.php
+│   ├── Jobs
+│   │   └── Job.php
+│   ├── Listeners
+│   ├── Policies
+│   ├── Providers
+│   │   ├── AppServiceProvider.php
+│   │   ├── AuthServiceProvider.php
+│   │   ├── EventServiceProvider.php
+│   │   └── RouteServiceProvider.php
+│   └── User.php
+├── artisan
+├── bootstrap
+│   ├── app.php
+│   ├── autoload.php
+│   └── cache
+│       └── services.json
+├── composer.json
+├── composer.lock
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── broadcasting.php
+│   ├── cache.php
+│   ├── compile.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── services.php
+│   ├── session.php
+│   └── view.php
+├── database
+│   ├── factories
+│   │   └── ModelFactory.php
+│   ├── migrations
+│   │   ├── 2014_10_12_000000_create_users_table.php
+│   │   └── 2014_10_12_100000_create_password_resets_table.php
+│   └── seeds
+│       └── DatabaseSeeder.php
+├── gulpfile.js
+├── package.json
+├── phpspec.yml
+├── phpunit.xml
+├── public
+│   ├── index.php
+├── resources
+│   ├── assets
+│   │   ├── css
+│   │   ├── js
+│   │   └── sass
+│   │       ├── app.scss
+│   ├── lang
+│   │   └── en
+│   │       ├── auth.php
+│   │       ├── pagination.php
+│   │       ├── passwords.php
+│   │       └── validation.php
+│   └── views
+│       ├── errors
+│       │   └── 503.blade.php
+│       └── welcome.blade.php
+├── server.php
+├── storage
+│   ├── app
+│   ├── framework
+│   │   ├── cache
+│   │   ├── sessions
+│   │   └── views
+│   └── logs
+│       └── laravel.log
+└── tests
+    ├── ExampleTest.php
+    └── TestCase.php
+
+                    </pre>
+    </div>
+</div>
+            <div id="lifecycle-request" class="section scrollspy row">
+    <h4 class="laravel-red">Request Lifecycle</h4>
+    <p>Всяка заявка към приложението минава през public/index.php </p>
+
+<pre class="prettyprint">
+// index.php
+require __DIR__.'/../bootstrap/autoload.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
+
+$response->send();
+
+$kernel->terminate($request, $response);
+
+</pre>
+
+<pre class="prettyprint">
+  // autoload.php
+  require __DIR__.'/../vendor/autoload.php';
+  $compiledPath = __DIR__.'/cache/compiled.php';
+
+  if (file_exists($compiledPath)) {
+      require $compiledPath;
+  }
+</pre>
+
+<pre class="prettyprint">
+// app.php
+  $app = new Illuminate\Foundation\Application(
+      realpath(__DIR__.'/../')
+  );
+
+  // bind HTTP Kernel
+  $app->singleton(
+      Illuminate\Contracts\Http\Kernel::class,
+      App\Http\Kernel::class
+   );
+
+   // bind Console Kernel
+   $app->singleton(
+      Illuminate\Contracts\Console\Kernel::class,
+      App\Console\Kernel::class
+    );
+
+   // bind Exeception handler
+   $app->singleton(
+       Illuminate\Contracts\Debug\ExceptionHandler::class,
+       App\Exceptions\Handler::class
+   );
+</pre>
+</div>
+
+<div id="http-console-kernels" class="section scrollspy row">
+    <h5 class="laravel-red">HTTP / Console Kernels</h5>
+    <p>След като приложенеито е инстанцирано, се извиква HTTP kernel или console kernel, в зависимост от
+        типа на заявката.
+    </p>
+    <p>От своя страна Kernel класа, изпълнява няколко "bootstrappers", като те служат за
+        определяне на средата, зареждане на конфигурация, обработка на изключение, регистрация и
+        инициализация на <strong>Service Providers</strong>.
+    </p>
+<pre class="prettyprint">
+  protected $bootstrappers = [
+        'Illuminate\Foundation\Bootstrap\DetectEnvironment',
+        'Illuminate\Foundation\Bootstrap\LoadConfiguration',
+        'Illuminate\Foundation\Bootstrap\ConfigureLogging',
+        'Illuminate\Foundation\Bootstrap\HandleExceptions',
+        'Illuminate\Foundation\Bootstrap\RegisterFacades',
+        'Illuminate\Foundation\Bootstrap\RegisterProviders',
+        'Illuminate\Foundation\Bootstrap\BootProviders',
+    ];
+</pre>
+    <p>Като допълнение HTTP kernel-а има дефиниран списък от <strong>middleware</strong>, през който преминат всички заявки преди да бъдат обработени от приложението.</p>
+<pre class="prettyprint">
+  \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+  \App\Http\Middleware\EncryptCookies::class,
+  \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+  \Illuminate\Session\Middleware\StartSession::class,
+  \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+  \App\Http\Middleware\VerifyCsrfToken::class,
+</pre>
+
+</div>
+
+<div id="service-providers" class="section scrollspy row">
+    <h5 class="laravel-red">Service Providers</h5>
+    <p>
+        Едни от най-важните стъпки при фазата на инициализация на Kernel класа са:
+    <ul>
+        <li>1. Регистрирането на <strong>Service Providers</strong> <strong>register()</strong></li>
+        <li>2. Тяхното инициализиране <strong>boot()</strong></li>
+    </ul>
+
+    Те са отговорни за инициализация на framework компонентите (връзка с базата данни, валидатори, рутиране и други).
+
+    Не всички сървиси се инициализират при всяка заявка. Тяхната иницализация, може да бъде отложена на по-късен етап, когато бъдат извикани. Така се оптимизира производителността.
+
+    Освен сървисите, които са част от Laravel можем сами да създаваме такива. На практика, това е начинът да създадем една библиотека. Близка аналогия, можем да направим с Module.php в контекста на zf2.
+    Списък с всички регистриани <strong>service providers</strong> може да открием в app/config/app.php .
+
+    За да създадем нов <strong>service provider</strong> e необходимо да създадем нов клас, който наследява \Illuminate\Support\ServiceProvider\ServiceProvider.
+    <pre class="prettyprint">  php artisan make:provider AppServiceProvider</pre>
+    Единственият метод, който задължително трябва да бъде имплементиран е <strong>boot</strong>
+
+    <pre class="prettyprint">
+class HashServiceProvider extends ServiceProvider
+{
+    // Indicates if loading of the provider is deferred.
+    protected $defer = true;
+
+    // Register the service provider.
+    public function register()
+    {
+        // Register a shared binding in the container.
+        $this->app->singleton('hash', function () { return new BcryptHasher; });
+    }
+
+    // Bootstrap any application services
+    public function boot()
+    {
+        // load config
+        // register any event listeners,
+        // register routes
+    }
+
+    // Get the services provided by the provider.
+    public function provides()
+    {
+        return ['hash'];
+    }
+}
+    </pre>
+</div>
+
+<div id="request-dispatch" class="section scrollspy row">
+    <h5 class="laravel-red">Dispatch Request</h5>
+    <p>
+        След като приложението е инициализирано и всички нуждни сървиси са регистрирани, заявката
+        ще  бъде обработена от рутера  и ще бъде изпратена към контролер или кложър отговраящ на съответния маршрут. ('/customers')
+    </p>
+</div>            <div id="service-container" class="section scrollspy row">
+    <h4 class="laravel-red">Service Container</h4>
+    <p>Laravel service container е мощен инстурмент, за управление на зависмосите между класовете, чрез инжектиране през
+        конструктор или сетър.
+    </p>
+
+    <pre class="prettyprint">
+class HandleUserSignedUp
+{
+    $mailer;
+
+    public function __construct(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
+    public function handle(UserSignedUp $event)
+    {
+        $this->mailer->send('emails.welcome', ['user' => $event->user()], function ($message) {
+            $message->to($user->email,  $user->name)->subject('Welcome!');
+        });
+    }
+}
+    </pre>
+
+    <h5 class="laravel-red">Основен начин на ползване</h5>
+    <h6><b>Регистраране</b></h6>
+    <p>
+        Почти винаги регистрирането на клас и описването на неговите зависимости се намира в <strong>service provider</strong>.
+        Всеки <strong>service provider</strong> съдържа инстанция на <strong>\Illuminate\Contracts\Foundation\Application</strong>.
+    </p>
+    <p>Начините по-които можем да регистрираме зависимостите са:</p>
+    <ul>
+        <li>
+            <strong>Анонимна функция</strong>
+     <pre class="prettyprint">
+$this->app->bind('HandleUserSignedUp', function($app) {
+        return new HandleUserSignedUp($app['mailer']);
+});
+    </pre>
+        </li>
+        <li>
+            <strong>Връзка на интерфейс към конкретна имплементация.</strong>
+     <pre class="prettyprint">
+$this->app->bind('Illuminate\Contracts\Mail', 'App\Mailers\UserMailer');
+     </pre>
+            Когато клас type hint-е като зависимост интерфейса <strong>Illuminate\Contracts\Mail</strong> контейнера ще му върне инстаниця на <strong>App\Mailers\UserMailer</strong>
+        </li>
+    </ul>
+
+    <p>Ако даден клас е регистриран в контейнера посредством метода <strong>bind</strong> , при свяко извикване ще бъде създавана нова иснтаниця.</p>
+    <p>В случай, че искаме за даден клас да същестува точно една инстанция, трябва да го регистрираме чрез метода <strong>singleton</strong> </p>
+    <pre class="prettyprint">
+$this->app->singleton('hash', function () {
+    return new BcryptHasher;
+});
+    </pre>
+    <h6><b>Регистраране в контекст</b></h6>
+    <p>В случаите, когато два класа използват един и същ интерфейс, но се нуждаят от разлина имплементация.</p>
+    <pre class="prettyprint">
+$this->app->when('App\Listeners\AppointmentWasCreated')
+    ->needs('App\Contracts\Notifier')
+    ->give('App\Services\Notifiers\SmsNotifer');
+    </pre>
+
+    <h6><b>Събития</b></h6>
+    <p>При вскяко инстанциране на обект се задейства събитие</p>
+<pre class="prettyprint">
+$this->app->resolving(function ($object, $app) {
+    // Called when container resolves object of any type
+});
+
+$this->app->resolving(UserRepository::class, function (UserRepository $userRepository, $app) {
+    // Called when container resolves objects of type "UserRepository"...
+});
+</pre>
+
+</div>
+            <div id="facade" class="section scrollspy row">
+    <h4 class="laravel-red">Façades :: </h4>
+    <pre class="prettyprint">
+Route::get('/', function () {
+    return Cache::get('users');
+});
+    </pre>
+    <p>В примера е описан път "/" и като резултат е върната информация от кеша. Привидно се извикват 2 статични метода <strong>get</strong> на класа Route и Cache</p>
+    <p>Всички сме чули и чели, че използването на статични методи не е много добра практика.
+        Всъщност <strong>Route</strong> и <strong>Cache</strong> предоставят статичен интерфейс за достъп до регистрираните в
+        <strong>service container-а</strong> класове <strong>Illuminate\Routing\Router</strong> и <strong>Illuminate\Cache\Repository</strong>.
+    </p>
+<pre class="prettyprint">
+  // zf2 way
+  $this->getServiceLocator()->get('router')
+  $this->getServiceLocator()->get('cache')
+</pre>
+
+    <p>Фасадата съдържа само един метод, който връща името, под което е регистраран дадения клас в контейнера. Използването на фасади не е
+        задължително, те са просто "синтактична захар" за service location.</p>
+<pre class="prettyprint">
+// Illuminate\Support\Facades\Cache;
+/**
+ * @see  \Illuminate\Cache\CacheManager
+ * @see  \Illuminate\Cache\Repository
+ */
+class Cache extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return  string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return 'cache';
+    }
+}
+
+// Illuminate\Cache\CacheServiceProvider
+  ...
+public function register()
+{
+    $this->app->singleton('cache', function ($app) {
+        return new CacheManager($app);
+    });
+
+    $this->app->singleton('cache.store', function ($app) {
+        return $app['cache']->driver();
+    });
+
+    $this->app->singleton('memcached.connector', function () {
+        return new MemcachedConnector;
+    });
+
+    $this->registerCommands();
+}
+  ...
+</pre>
+    <p>Добре е фасадите да се използват предимно в контролерите.</p>
+    Пример за интеграционнен тест и използване на фасади
+<pre class="prettyprint">
+Route::get('/token', function () {
+    return Response::json(['access_token' => Hash::make(time())]);
+});
+
+/** @test  */
+public function should_see_access_token_in_response()
+{
+  (1) Illuminate\Support\Facades\Hash::shouldReceive('make')->once()->andReturn('123');
+
+    // eq to (1)
+    $hasher = Mockery::mock(Illuminate\Hashing\BcryptHasher::class);
+    $this->app->instance('hash', $hasher);
+    $hasher->shouldReceive('make')->once()->andReturn('123');
+
+    $this->visit('/token')->seeJson([
+        'access_token' => '123',
+    ]);
+}
+</pre>
+<p>Списък на всички фасади и кореспондиращите им класове, може да намерите в <a href="https://laravel.com/docs/5.2/facades#facade-class-reference" target="_blank">документацията</a></p>
+</div>
+
+
+            <div id="routing" class="section scrollspy row">
+    <h4 class="laravel-red">HTTP Routing</h4>
+    <p>Laravel предоставя лесен и експресивен синтаксис за дефиниране на маршрути.</p>
+    <p>По подразбиране маршрутите се описват в <strong>app/Http/routes.php</strong>.</p>
+
+    <h5>Closure</h5>
+    <p>Най-базовият вариант за описване на един маршрут. URI -> Closure </p>
+    <pre class="prettyprint">
+Route::get('/welcome', function () {
+    return 'Hello World';
+});
+    </pre>
+    <h5>Методи</h5>
+    <pre class="prettyprint">
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+    </pre>
+    <p>В случаите, когато се налага достъп до един маршрут чрез повече от един HTTP метод:</p>
+    <pre class="prettyprint">
+Route::match(['get', 'post'], '/', function () {
+//
+});
+
+Route::any('/foo', function () {
+//
+});
+</pre>
+    <h5>Параметри и ограничения</h5>
+<pre class="prettyprint">
+<strong>id</strong> e задължителен параметър
+Route::get('user/{id}', function ($id) {
+    return 'User '.$id;
+});
+
+<strong>name</strong> е опционален параметър
+Route::get('user/{name?}', function ($name = null) {
+    return $name;
+});
+</pre>
+    Можем да налагаме ограничения върху подадените параметри
+<pre class="prettyprint">
+Route::get('user/{name}', function ($name) {  })->where('name', '[A-Za-z]+');
+</pre>
+
+    <h5>Именоване</h5>
+    <p>Посредством именоването на маршрутите, можем по лесен начин да генерираме URL адреси или да сменим крайната точка без "Find and Replace".</p>
+<pre class="prettyprint">
+Route::get('user/profile', ['as' => 'profile', function () {
+}]);
+
+route('profile') -> http://localhost:8000/user/profile
+
+// Промяна на адреса и запазване на името
+Route::get('user/my-profile', ['as' => 'profile', function () {
+}]);
+route('profile') -> http://localhost:8000/user/my-profile
+
+</pre>
+
+    <h5>Групиране</h5>
+    <p>Можем да групираме маршрути по общи атрибути, като namespace, middleware subdomains.</p>
+    <pre class="prettyprint">
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function ()    {
+        // Uses Auth Middleware
+    });
+
+    Route::get('user/profile', function () {
+            // Uses Auth Middleware
+    });
+});
+
+Route::group(['namespace' => 'Admin'], function() {
+    // Controllers Within The "App\Http\Controllers\Admin" Namespace
+
+    Route::group(['namespace' => 'User'], function() {
+        // Controllers Within The "App\Http\Controllers\Admin\User" Namespace
+    });
+});
+
+Route::group(['domain' => '{account}.myapp.com'], function () {
+    Route::get('user/{id}', function ($account, $id) {
+        //
+    });
+});
+    </pre>
+    <h5>Обвързване на модел с маршрут</h5>
+
+    <pre class="prettyprint">
+    Route::get('api/users/{user}', function (App\User $user) {
+         return $user->email;
+    });
+    </pre>
+    <p>Laravel автоматично ще извлече User модела за нас, като по подразбиране използва `id`. Ако не бъде намерен запис -> 404 HTTP</p>
+    <pre class="prettyprint">
+    // App\User.php
+    public function getRouteKeyName()
+    {
+        return 'email';
+    }
+    </pre>
+
+    <h5>PUT, PATCH, DELETE в HTML форми</h5>
+    <p>За да може, една html форма да изпрати заявка с метод PUT, PATCH или DELETE. Трябва да изпратим допълнителен параметър с име "_method" </p>
+    <pre class="prettyprint">
+        < input type="hidden" name="_method" value="PUT" >
+        оr
+        { { method_field('PUT') } }
+    </pre>
+
+    <h5>Controller</h5>
+    <p>Всички контролери в Laravel трябва да са наследници на базовият контроллер <strong>App\Http\Controllers\Controller</strong>.</p>
+
+    <pre class="prettyprint">
+class UserController extends Controller
+{
+    public function showProfile($id)
+    {
+        return view('user.profile', ['user' => User::findOrFail($id)]);
+    }
+}
+
+// Регистриране на маршрут към контролер
+Route::get('user/{id}', 'UserController@showProfile');
+    </pre>
+    <p>Като отново можем да прилагаме същите свойства, както за Closure базираните маршрути.</p>
+    <pre class="prettyprint">
+Route::get('profile', [
+ 'middleware' => 'auth',
+ 'as' => 'users',
+ 'uses' => 'UserController@showProfile'
+]);
+    </pre>
+    <p>Mожем да опишем <strong>middleware</strong> в конструктура.</p>
+    <pre class="prettyprint">
+class UserController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('log', ['only' => [
+            'fooAction',
+            'barAction',
+        ]]);
+
+        $this->middleware('subscribed', ['except' => [
+            'fooAction',
+            'barAction',
+        ]]);
+    }
+}
+    </pre>
+    <h5>RESTful Resource Controllers</h5>
+    <p>Чрез Resource Controllers, можем лесно да изградим логика около един ресурс</p>
+    <pre class="prettyprint">
+        php artisan make:controller PhotoController --resource
+    </pre>
+    <p>Artisan ще генерира за нас <strong>app/Http/Controllers/PhotoController.php</strong> с методи за стандартните действия.</p>
+    Необходимо е да регистрираме ресурса в routes.php
+    <pre class="prettyprint">
+Route::resource('photo', 'PhotoController');
+    </pre>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Verb</th>
+                <th>Path</th>
+                <th>Action</th>
+                <th>Route Name</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>GET</td>
+            <td>/photo</td>
+            <td>index</td>
+            <td>photo.index</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/photo/create</td>
+            <td>create</td>
+            <td>photo.create</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/photo</td>
+            <td>store</td>
+            <td>photo.store</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/photo/{photo}</td>
+            <td>show</td>
+            <td>photo.show</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/photo/{photo}/edit</td>
+            <td>edit</td>
+            <td>photo.edit</td>
+        </tr>
+        <tr>
+            <td>PUT/PATCH</td>
+            <td>/photo/{photo}</td>
+            <td>update</td>
+            <td>photo.update</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/photo/{photo}</td>
+            <td>destroy</td>
+            <td>photo.destroy</td>
+        </tr>
+    </table>
+
+    <h5>Dependency Injection & Controllers</h5>
+    <p>Контролерите се инстанцират от <strong>service container</strong>, като това ни позволява да инжектираме зависимости през конструктура или в определен метод</p>
+
+    <pre class="prettyprint">
+class PhotoController extends Controller
+{
+    protected $photos;
+
+    public function __construct(PhotoRepository $photos)
+    {
+        $this->photos = photos;
+    }
+
+    public function store(Request $request)
+    {
+        $name = $request->input('name');
+    }
+}
+    </pre>
+
+    <h5>Route Caching</h5>
+    <pre class="prettyprint">
+php artisan route:cache -- generate route cache
+php artisan route:clear -- clear route cache
+    </pre>
+</div>            <div id="middleware" class="section scrollspy row">
+    <h4 class="laravel-red">HTTP Middleware</h4>
+    <p>Чрез HTTP middleware можем да декорираме заявките, изпратени към приложенитето или върнатият отговор. Например:</p>
+    <ul>
+        <li>Проверка за аудентикация</li>
+        <li>Запис на информация в лог</li>
+        <li>Добавяне на допълнителни хедъри</li>
+    </ul>
+    <h5>Дефиниране на middleware</h5>
+    <pre class="prettyprint">
+php artisan make:middleware Authenticate
+    </pre>
+ <pre class="prettyprint">
+namespace App\Http\Middleware;
+class Authenticate
+{
+    protected $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param    \Illuminate\Http\Request  $request
+     * @param    \Closure  $next
+     * @return  mixed
+     */
+    // Before  Middleware
+    public function handle($request, Closure $next)
+    {
+        if ($this->auth->guest()) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('auth/login');
+            }
+        }
+        return $next($request);
+    }
+
+    // After Middleware
+    public function handle($request, Closure $next)
+    {
+        /** @var  \Illuminate\Http\Response $response */
+        $response = $next($request);
+        $response->header('ETag', 'e6811cdbcedf972c5e8105a89f637d39-gzip');
+        return $response;
+    }
+
+}
+</pre>
+    <h5>Регистриране на middleware</h5>
+    <p>Middeware трябва да бъде регистриран в <strong>app/Http/Kernel.php</strong></p>
+    <pre class="prettyprint">
+     /**
+     * The application's global HTTP middleware stack.
+     * These middleware are run during every request to your application.
+     */
+    protected $middleware = [
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    ];
+
+    /**
+     * The application's route middleware groups.
+     * @var  array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+        ],
+
+        'api' => [
+            'throttle:60,1',
+        ],
+    ];
+
+    /**
+     * The application's route middleware.
+     * These middleware may be assigned to groups or used individually.
+     */
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    ];
+    </pre>
+
+</div>            <div id="views" class="section scrollspy row">
+    <h4 class="laravel-red">Views & Blade Templates</h4>
+    <p>Blade е темплейтната система на Laravel. Всички view-а се компилират до чист PHP код и биват кеширани, докато не бъдат променени, като по този начин
+        излишното натоварване е сведено до минимум. Blade интерпретира файлове с разширение .blade.php, които се намират в <strong>resources/view</strong> </p>
+
+    <h5>Layout</h5>
+    <pre class="prettyprint">
+        <!-- Stored in resources/views/layouts/master.blade.php -->
+< html >
+< head >< title>App Name - @yiеld('title') </ title >< /head >
+  < body >
+    @sеction('sidebar')
+        This is the master sidebar.
+    @shоw
+
+    < div class="container">
+        @yiеld('content')
+    < /div>
+    < /body>
+< /html>
+    </pre>
+
+</div>
+        </div>
+        <div class="col hide-on-small-only m2">
+            <div class="table-of-contents-wrapper">
+    <ul class="section table-of-contents">        
+        <li ><a href="#applicationstructure">Application Structure</a></li>
+        <li class="nested-scrollspy"><a href="#root-dir">Root Dir</a></li>
+        <li ><a href="#lifecycle-request">Request Lifecycle</a></li>
+        <li class="nested-scrollspy"><a href="#http-console-kernels">HTTP / Console Kernels</a></li>
+        <li class="nested-scrollspy"><a href="#service-providers">Service Providers</a></li>
+        <li class="nested-scrollspy"><a href="#request-dispatch">Dispatch Request</a></li>
+        <li class="nested-scrollspy"><a href="#">Artisan</a></li>
+        <li class="nested-scrollspy"><a href="#service-container">Service Container</a></li>
+        <li><a href="#facade">Facade</a></li>
+        <li><a href="#routing">Routing</a></li>
+        <li><a href="#middleware">HTTP Middleware</a></li>
+        <li><a href="#views">Views & Blade Templates</a></li>
+        <li><a href="#models">Database</a></li>
+        <li class="nested-scrollspy"><a href="#migrations">Migrations</a></li>
+        <li class="nested-scrollspy"><a href="#migrations">Seeding</a></li>
+        <li class="nested-scrollspy"><a href="#migrations">Eloquent ORM</a></li>
+        <li class="nested-scrollspy"><a href="#migrations">Relationships</a></li>
+        <li class="nested-scrollspy"><a href="#migrations">Collections</a></li>
+        <li class="nested-scrollspy"><a href="#migrations">Query Builder</a></li>
+
+        <li class=""><a href="#validationrules">Auth</a></li>
+        <li class=""><a href="#validationrules">Validation</a></li>
+        <li class=""><a href="#validationrules">Events</a></li>
+        <li class=""><a href="#validationrules">Queues</a></li>
+        <li class=""><a href="#validationrules">Task Scheduling</a></li>
+        <li class=""><a href="#validationrules">SSH Tasks</a></li>
+        <li class=""><a href="#validationrules">Testing</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    </div>
+    <footer class="page-footer  lighten-5"></footer>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/prettyprint.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.scrollspy').scrollSpy();
+        $('.table-of-contents-wrapper').pushpin({
+            top: $('.table-of-contents-wrapper').offset().top,
+            bottom: $('.page-footer').offset().top - $('.table-of-contents-wrapper').height()
+        });
+    });
+</script>
+</body>
+</html>
